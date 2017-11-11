@@ -1,0 +1,24 @@
+217. Contains Duplicate
+============================================================
+Given an array of integers, find if the array contains any duplicates. 
+Your function should return true if any value appears at least twice in the array, 
+and it should return false if every element is distinct.
+============================================================
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        sort(nums.begin(),nums.end()) ;            //C++排序
+        if (nums.size()== 0) {                     //避免输入空数组
+            return false ;
+        }
+        for (int i = 0 ; i < nums.size()-1 ; i++) {    //此处应为nums.size()-1 ,避免数组越界
+            if(nums[i] == nums[i+1]){
+                return true ;
+            }
+        }
+        return false ;
+        
+    }
+};
+=============================================================
+
