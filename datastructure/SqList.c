@@ -177,5 +177,72 @@ Status NextElem(const SqList L,Elemtype cur_e, Elemtype *next_e)
 	return ERROR;
     }
 }
+//
+//
+//
+Status InsertElem(SqList *L, int i,Elemtype e)
+{
+    Elemtype *new;
+    if(i < 1||i > L->length + 1)
+    {
+	return ERROR;
+    }
+    if(L->length >= L->size)
+    {
+	new = (Elemtype*)realloc(L->elem,(L->size + INCREMENT_SIZE)*sizeof(Elemtype));
+	if(!new) 
+	{
+	    return ERROR;
+	}
+	L->elem = new;
+	L->size += INCREMENT_SIZE;
+    }
+    Elemtype *p = &L->elem[i - 1];
+    Elemtype *q = &L->elem[L->length-1];
+    for(;q >= p; q--)
+    {
+	*(q + 1) = *q;
+    }
+    *p = e;
+    ++L->length;
+    return OK;
+}
+//
+//
+//
 
+Status DeleteElem(SqList *L, int i,Elemtype *e)
+{
+    if(i < 1 || i > L->length)
+    {
+	return ERROR;
+    }
+    Elemtype *p = &L->elem[i - 1];
+    *e = *p;
+    for(;p < &L->elem[L->length];p++)
+    {
+	*(p) = *(p + 1);
+    }
+    --L->length;
+    return OK;
+}
+//
+//
+//
+void visit(Elemtype e)
+{
+    printf("%d ",e);
+}
 
+//
+//
+//
+Status TraverseList(const SqList L,void (*visit)(Elemtype))
+{
+    int i;
+    for(i = 0; i < L.length; i++)
+    {
+	visit(L.elem[i];
+    }
+    return OK;
+}
