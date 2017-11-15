@@ -37,7 +37,7 @@ public:
     {
         int sum = 0;
         int div = 9;
-        for(int k = i - 1; k < i + 2; k++)        //+1��Ϊ+2
+        for(int k = i - 1; k < i + 2; k++)        //+1改为+2
         {
             for(int l = j - 1; l < j + 2; l++)
             {
@@ -59,7 +59,7 @@ public:
         {
             for(int j = 0; j < M[0].size(); j++)
             {
-                res[i][j]=floor(M,i,j);
+                res[i][j]=floor(M,i,j);                      //不能直接在M上操作，会影响后续结果
                 
             }
         }
