@@ -39,6 +39,6 @@ bool isNumber(string s)
     //skip the trailing whitespaces
     for(;s[i] == ' '; ++i) {}
     
-    return i == s.size();     
+    return i == s.size();     //如果上述操作没有使i到达s的末尾，则false,反之则return true;
 }
 ```
